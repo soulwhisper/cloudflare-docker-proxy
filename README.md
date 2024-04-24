@@ -27,13 +27,11 @@
   - add all domains (which config in _step 4_. eg: `docker-proxy.yourdomain.com`, `quay-proxy.yourdomain.com` etc.) to **Custom Domains** of the worker you have deployed. 
 
 ## Config Docker mirrors
-modify `/etc/docker/daemon.json`, add **registry-mirrors** as follow:
-    ```javascript
+1. modify `/etc/docker/daemon.json`, add **registry-mirrors** as follow:
+   ```javascript
     {
         "registry-mirrors": ["https://docker-proxy.yourdomain.com"]
     }
-    ```
-2. restart docker daemon
-   };
    ```
+2. restart docker daemon
 
