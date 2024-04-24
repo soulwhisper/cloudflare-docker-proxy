@@ -15,7 +15,7 @@
    const routes = {
      "docker-proxy.yourdomain.com": "https://registry-1.docker.io",
      "quay-proxy.yourdomain.com": "https://quay.io",
-     "gcr-proxy.yourdomain.com": "https://k8s.gcr.io",
+     "gcr-proxy.yourdomain.com": "https://gcr.io",
      "ghcr-proxy.yourdomain.com": "https://ghcr.io",
      "k8s-proxy.yourdomain.com": "https://registry.k8s.io",
    };
