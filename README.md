@@ -5,7 +5,7 @@
 > If you're looking for proxy for helm, maybe you can try [cloudflare-helm-proxy](https://github.com/ciiiii/cloudflare-helm-proxy).
 
 ## Deploy
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ciiiii/cloudflare-docker-proxy)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/soulwhisper/cloudflare-docker-proxy)
 
 1. create an cloudflare **API Token** first (token ONLY SHOW ONCE), **Account ID** is needed. (Account ID is different from Login ID. If Account ID **Not Found**, create an **Application** in **cloudflare workers** page first.)
 2. fork this project
