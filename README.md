@@ -7,31 +7,33 @@
 ## Deploy
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ciiiii/cloudflare-docker-proxy)
 
-1. fork this project
-2. modify the link of the above button to your fork url
-3. click the button, you will be redirected to the deploy page
-
-## Config tutorial
-
-1. use cloudflare worker host: only support proxy one registry
+1. create an cloudflare **API Token** first (token ONLY SHOW ONCE), **Account ID** is needed. (Account ID is different from Login ID. If Account ID **Not Found**, create an **Application** in **cloudflare workers** page first.)
+2. fork this project
+3. modify the link of the above button to your fork url
+4. modify **routes** according to your **domain** as follow: (in file `src/index.js`)
    ```javascript
    const routes = {
-     "${workername}.${username}.workers.dev/": "https://registry-1.docker.io",
+     "docker-proxy.yourdomain.com": "https://registry-1.docker.io",
+     "quay-proxy.yourdomain.com": "https://quay.io",
+     "gcr-proxy.yourdomain.com": "https://k8s.gcr.io",
+     "ghcr-proxy.yourdomain.com": "https://ghcr.io",
+     "k8s-proxy.yourdomain.com": "https://registry.k8s.io",
    };
-   ```
-2. use custom domain: support proxy multiple registries route by host
-   - host your domain DNS on cloudflare
-   - add `A` record of xxx.example.com to `192.0.2.1`
-   - deploy this project to cloudflare workers
-   - add `xxx.example.com/*` to HTTP routes of workers
-   - add more records and modify the config as you need
-   ```javascript
-   const routes = {
-     "docker.libcuda.so": "https://registry-1.docker.io",
-     "quay.libcuda.so": "https://quay.io",
-     "gcr.libcuda.so": "https://k8s.gcr.io",
-     "k8s-gcr.libcuda.so": "https://k8s.gcr.io",
-     "ghcr.libcuda.so": "https://ghcr.io",
+   ```  
+5. click the button, you will be redirected to the deploy page.
+6. do the following steps:
+  - host your domain DNS on cloudflare
+  - Click **Triggers** in the _worker page_ to show **Custom Domains** and **Routes** info.
+  - add all domains (which config in _step 4_. eg: `docker-proxy.yourdomain.com`, `quay-proxy.yourdomain.com` etc.) to **Custom Domains** of the worker you have deployed. 
+
+## Config Docker mirrors
+modify `/etc/docker/daemon.json`, add **registry-mirrors** as follow:
+    ```javascript
+    {
+        "registry-mirrors": ["https://docker-proxy.yourdomain.com"]
+    }
+    ```
+2. restart docker daemon
    };
    ```
 
